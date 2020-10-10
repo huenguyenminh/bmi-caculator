@@ -19,10 +19,10 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import GenderSelection from './GenderSelection';
 import HeightSelection from './HeightSelection';
 import WeightSelection from './WeightSelection';
-
+import SliderC from './Slider';
 export default function BodyBMI() {
   const [gender, setGender] = useState('male');
- 
+  const [height, setHeight] = useState(150);
   
 
   return (
@@ -31,7 +31,7 @@ export default function BodyBMI() {
           <GenderSelection style={styles.flex1} gender={gender} setGender={setGender} />
         </View>
         <View style={[styles.flex1, styles.sliderBlock]}>
-          <HeightSelection />
+          <HeightSelection height={height} setHeight={setHeight}/>
         </View>
         <View style={[styles.flex1, styles.weightAge]}>
           <WeightSelection/>
