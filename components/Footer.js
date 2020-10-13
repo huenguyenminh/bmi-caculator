@@ -41,11 +41,11 @@ const styles = StyleSheet.create({
   },
   btn: {
       height: 45,
-      width: '100%',
       backgroundColor: '#e02354',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      borderRadius: 5
+      borderRadius: 5,
+      marginHorizontal: 15
   }
 });

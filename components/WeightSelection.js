@@ -4,6 +4,7 @@ import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 // export default function WeightSelection(props) {
 export default function WeightSelection({weight, setWeight, age, setAge}) {
   const step = 1;
+  const longStep = 5;
   
   function decreaseWeight(val) {
     // callback function or set gia tri moi
@@ -58,12 +59,14 @@ export default function WeightSelection({weight, setWeight, age, setAge}) {
                 <View style={[styles.cta]}>
                     <TouchableOpacity 
                       onPress={() => decreaseWeight(step)}
+                      onLongPress={() => decreaseWeight(longStep)}
                       style={[styles.txtWhite, styles.btnCircle]
                     }>
                         <Text style={[styles.h3, styles.txtWhite]}>-</Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
                       onPress={() => increaseWeight(step)}
+                      onLongPress={() => increaseWeight(longStep)}
                       style={[styles.txtWhite, styles.btnCircle]
                     }>
                         <Text style={[styles.h3, styles.txtWhite]}>+</Text>
@@ -80,12 +83,14 @@ export default function WeightSelection({weight, setWeight, age, setAge}) {
                 <View style={[styles.cta]}>
                     <TouchableOpacity 
                       onPress={() => decreaseAge(step)}
+                      onLongPress={() => decreaseAge(longStep)}
                       style={[styles.txtWhite, styles.btnCircle]
                     }>
                         <Text style={[styles.h3, styles.txtWhite]}>-</Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
                       onPress={() => increaseAge(step)}
+                      onLongPress={() => increaseAge(longStep)}
                       style={[styles.txtWhite, styles.btnCircle]
                     }>
                         <Text style={[styles.h3, styles.txtWhite]}>+</Text>

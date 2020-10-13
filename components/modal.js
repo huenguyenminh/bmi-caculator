@@ -12,17 +12,20 @@ const heathRange = [
     {
         name: 'Underweight',
         description: 'Need to more ex...Underweight. Try to... something!',
-        value: 18.5
+        value: 18.5,
+        color: 'yellow'
     },
     {
         name: 'Normal',
         description: 'Need to more ex...Normal. Try to... something!',
-        value: 25
+        value: 25,
+        color: 'green'
     },
     {
         name: 'OverWeight',
         description: 'Need to more ex...OverWeight. Try to... something!',
-        value: 30
+        value: 30,
+        color: 'red'
     },
 ];
 
@@ -37,8 +40,10 @@ const ModalBMI = ({
     const range = heathRange.find(item => bim <= item.value) || {
         name: 'Obese',
         description: 'Need to more ex...Obese. Try to... something!',
-        value: 30
+        value: 30,
+        color: 'white'
     }
+    
     
   return (
     <View style={modalVisible ? styles.centeredView : ''}>
@@ -52,14 +57,17 @@ const ModalBMI = ({
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={[styles.txtWhite, styles.h3, styles.mb10]}>Your Result: </Text>
+            <Text style={[ styles.h3, styles.mb10, styles.txtWhite]}>Your Result: </Text>
             <View style={[styles.flex1, styles.txtWhite, styles.result]}>
+
                 <View style={[styles.flexCenterAll, styles.txtWhite]}>
-                    <Text style={[styles.txtWhite, styles.range]}>{range.name}</Text>
+                    <Text style={[{color: range.color}, styles.range]}>{range.name}</Text>
                 </View>
+
                 <View style={[styles.flexCenterAll, styles.txtWhite]}>
                     <Text style={[styles.txtWhite, styles.bimValue]}>{bim}</Text>
                 </View>
+
                 <View style={[styles.flexCenterAll, styles.txtWhite]}>
                     <Text style={[styles.txtWhite, styles.description]}>{range.description}</Text>
                 </View>
@@ -121,6 +129,9 @@ const styles = StyleSheet.create({
   result: {
     width: '100%',
     paddingVertical: 50,
+    backgroundColor: '#323344',
+    padding: 30,
+    borderRadius: 10,
   },
   h3:{
       fontSize: 40,
@@ -161,7 +172,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   range: {
-      color: 'yellow',
       fontSize: 24,
       textTransform: 'uppercase',
       textAlign: 'center',
