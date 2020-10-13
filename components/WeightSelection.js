@@ -1,49 +1,93 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import Slider from '@react-native-community/slider';
+// export default function WeightSelection(props) {
+export default function WeightSelection({weight, setWeight, age, setAge}) {
+  const step = 1;
+  
+  function decreaseWeight(val) {
+    // callback function or set gia tri moi
+    // setAge( () => val ); 
 
-export default function WeightSelection() {
-    const [weight, setWeight] = useState(50);
-  const [age, setAge] = useState(20);
+    // setWeight(weight - step);
+    setWeight( () => { // callback function or set gia tri moi
+      (weight - step > 1 )? setWeight(weight - step) : setWeight(1);
+    } );
+  }
+  function increaseWeight(val) {
+    setWeight(weight + step);
+  }
+
+  function decreaseAge(val) {
+    // setAge(age - step);
+    setAge( () => { 
+      (age - step > 1 )? setAge(age - step) : setAge(1);
+    } );
+  }
+  function increaseAge(val) {
+    setAge(age + step);
+  }
   return (
     <View style={[styles.flex1,styles.weightAgeBlock]}>
-        <View style={[styles.flex1, styles.weightBlock]}>
-            <View style={[styles.flex1, styles.itemBlock, styles.mrhalft]}>
+        {/* <View style={[styles.flex1, styles.weightBlock]}>
+            <View style={[styles.flex1, styles.itemBlock]}>
                 <Text style={[styles.h4, styles.txtGray, styles.mb10]}>Weight</Text>
                 <Text style={[styles.txtWhite, styles.h2, styles.mb15]}>
                     {weight}
                 </Text>
                 <View style={[styles.cta]}>
-                    <TouchableOpacity style={[styles.txtWhite, styles.btnCircle]}>
+                    <TouchableOpacity 
+                      onPress={() => decreaseWeight(step)}
+                      style={[styles.txtWhite, styles.btnCircle]}>
                         <Text style={[styles.h3, styles.txtWhite]}>-</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.txtWhite, styles.btnCircle]}>
+                    <TouchableOpacity 
+                      onPress={() => increaseWeight(step)}
+                      style={[styles.txtWhite, styles.btnCircle]}>
+                        <Text style={[styles.h3, styles.txtWhite]}>+</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </View> */}
+        <View style={[styles.flex1, styles.ageBlock, styles.mrhalft]}>
+           <View style={[styles.flex1,styles.itemBlock]}>
+                <Text style={[styles.h4, styles.txtGray, styles.mb10]}>Weight</Text>
+                <Text style={[styles.txtWhite, styles.h2, styles.mb15]}>
+                    {weight}
+                </Text>
+                <View style={[styles.cta]}>
+                    <TouchableOpacity 
+                      onPress={() => decreaseWeight(step)}
+                      style={[styles.txtWhite, styles.btnCircle]
+                    }>
+                        <Text style={[styles.h3, styles.txtWhite]}>-</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                      onPress={() => increaseWeight(step)}
+                      style={[styles.txtWhite, styles.btnCircle]
+                    }>
                         <Text style={[styles.h3, styles.txtWhite]}>+</Text>
                     </TouchableOpacity>
                 </View>
             </View>
         </View>
         <View style={[styles.flex1, styles.ageBlock, styles.mlhalft]}>
-        <   View style={[styles.flex1,styles.itemBlock]}>
+           <View style={[styles.flex1,styles.itemBlock]}>
                 <Text style={[styles.h4, styles.txtGray, styles.mb10]}>Age</Text>
                 <Text style={[styles.txtWhite, styles.h2, styles.mb15]}>
                     {age}
                 </Text>
                 <View style={[styles.cta]}>
-                    <TouchableOpacity style={[styles.txtWhite, styles.btnCircle]}>
+                    <TouchableOpacity 
+                      onPress={() => decreaseAge(step)}
+                      style={[styles.txtWhite, styles.btnCircle]
+                    }>
                         <Text style={[styles.h3, styles.txtWhite]}>-</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.txtWhite, styles.btnCircle]}>
+                    <TouchableOpacity 
+                      onPress={() => increaseAge(step)}
+                      style={[styles.txtWhite, styles.btnCircle]
+                    }>
                         <Text style={[styles.h3, styles.txtWhite]}>+</Text>
                     </TouchableOpacity>
                 </View>

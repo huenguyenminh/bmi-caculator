@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
   },
   selectGender: {
     paddingHorizontal: 15,
-    paddingVertical: 15,
     flexDirection: 'row',
     width: '100%',
     flex: 1,

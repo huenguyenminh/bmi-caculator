@@ -16,14 +16,16 @@ import {
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 
-export default function FooterBMI() {
+export default function Footer({calculateBMI, title}) {
     
   return (
-      <View style={styles.footer}>
-        <TouchableOpacity style={styles.btn}>
-            <Text style={[styles.h3, styles.txtWhite]}>Calculate</Text>
-        </TouchableOpacity>
-      </View>
+      
+      <TouchableOpacity 
+        onPress={calculateBMI}
+        style={styles.btn}>
+          <Text style={[styles.h3, styles.txtWhite]}>{title}</Text>
+      </TouchableOpacity>
+     
   );
 };
 
@@ -31,12 +33,7 @@ const styles = StyleSheet.create({
  txtWhite: {
    color: 'white'
   },
-  footer: {
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 15,
-  }, 
+  
   h3: {
       textTransform: "uppercase",
       fontSize: 24,

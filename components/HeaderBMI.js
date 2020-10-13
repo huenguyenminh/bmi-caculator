@@ -15,14 +15,16 @@ import {
   StatusBar,
 } from 'react-native';
 
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-
-export default function HeaderBMI() {
-    
+// export default function HeaderBMI(props) {
+// default parmeter :  export default function HeaderBMI({title, height = 50}) {
+  export default function HeaderBMI({title, height}) {
+    console.log(title, height);
+    const h = height || 50;
   return (
       <View style={styles.header}>
-        <Text style={[styles.txtWhite, styles.h3]}>Bim Calculator</Text>
+        {/* <Text style={[styles.txtWhite, styles.h3]}>{props.title}</Text> */}
+        <Text style={[styles.txtWhite, styles.h3, {height: h}]}>{title}</Text>
       </View>
   );
 };

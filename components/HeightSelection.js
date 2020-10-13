@@ -7,47 +7,38 @@
  */
 
 import React, {useState} from 'react';
-import {StyleSheet, View, Text, TouchableOpacity,Slider} from 'react-native';
-
+import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import Slider from '@react-native-community/slider';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-export default class HeightSelection extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 50
-    };
-  }
+// export default class HeightSelection extends React.Component {
+export default function HeightSelection({height, setHeight}) {
+  // const [val, setValue] = useState({height})
 
-  change(value) {
-    this.setState(() => {
-      return {
-        value: parseFloat(value)
-      };
-    });
-  }
-  render() {
-    const { value } = this.state;
-    return (
-      <View style={[styles.flex1, styles.sliderBarWrap]}>
-          <Text style={[styles.txtGray, styles.h4, styles.mb10]}>Height</Text>
-          <Text style={[styles.txtWhite, styles.h2, styles.mb15]}>
-              {String(value)}
-              <Text style={[styles.txtWhite, styles.h5]}>cm</Text>
-          </Text>
-          <Slider
-              style={[styles.slider]}
-              step={1}
-              minimumValue={50}
-              maximumValue={200}
-              onValueChange={this.change.bind(this)}
-              value={value}
-              minimumTrackTintColor="#6b3b52"
-              maximumTrackTintColor="#000000"
-          />
-      </View>
-    );
+  function change(val) {
+    setHeight(parseFloat(val))
+    // setValue(parseFloat(val));
   }
   
+  return (
+    <View style={[styles.flex1, styles.sliderBarWrap]}>
+        <Text style={[styles.txtGray, styles.h4, styles.mb10]}>Height</Text>
+        <Text style={[styles.txtWhite, styles.h2, styles.mb15]}>
+            {height}
+            <Text style={[styles.txtWhite, styles.h5]}>cm</Text>
+        </Text>
+        <Slider
+            style={[styles.slider]}
+            step={1}
+            minimumValue={50}
+            maximumValue={200}
+            // onValueChange={ (val) => change(val)}
+            onValueChange={change} // truyen mot ham vao Callback
+            value={height}
+            minimumTrackTintColor="#6b3b52"
+            maximumTrackTintColor="#000000"
+        />
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -68,7 +59,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   slider: {
-    width: 200, 
+    width: 300, 
     height: 20
   },
   mrhalft:{
